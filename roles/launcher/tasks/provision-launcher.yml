@@ -21,7 +21,7 @@
   register: openshift_client_secret_response
   failed_when: openshift_client_secret_response.stderr != ""
   until: openshift_client_secret_response.stdout
-  retries: 50
+  retries: 150
   delay: 3
   changed_when: openshift_client_secret_response.stdout
 

@@ -15,7 +15,7 @@
   shell: oc tag --source=docker {{ rhsso_imagestream_image }} openshift/{{ rhsso_imagestream_name }}
   register: result
   until: result.stdout
-  retries: 50
+  retries: 150
   delay: 1
   failed_when: not result.stdout
   changed_when: False
@@ -24,7 +24,7 @@
   shell: oc -n openshift import-image {{ rhsso_imagestream_name }}
   register: result
   until: result.stdout
-  retries: 50
+  retries: 150
   delay: 1
   failed_when: not result.stdout
   changed_when: False
@@ -112,7 +112,7 @@
   shell: sleep 5; oc get keycloakrealm {{ rhsso_realm }} -o template --template \{\{.status.phase\}\}  -n {{ rhsso_namespace }}  |  grep  'reconcile'
   register: result
   until: result.stdout
-  retries: 50
+  retries: 150
   delay: 10
   failed_when: not result.stdout
   changed_when: False
