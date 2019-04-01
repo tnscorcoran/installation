@@ -33,7 +33,7 @@
   shell: sleep 5; oc get pods --namespace {{ webapp_namespace }}  |  grep  "Creating"
   register: result
   until: not result.stdout
-  retries: 150
+  retries: 200
   delay: 10
   failed_when: result.stdout
   changed_when: False

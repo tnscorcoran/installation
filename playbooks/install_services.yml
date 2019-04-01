@@ -113,7 +113,7 @@
       shell: oc -n openshift import-image postgresql --all
       register: result
       until: result.stdout
-      retries: 150
+      retries: 200
       delay: 1
       failed_when: not result.stdout
       changed_when: False

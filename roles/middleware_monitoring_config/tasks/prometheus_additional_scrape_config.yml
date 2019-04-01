@@ -40,7 +40,7 @@
     register: monitoring_prometheus_check
     until: monitoring_prometheus_check.rc == 0
     delay: 5
-    retries: 150
+    retries: 200
 
   - name: Patch the middleware monitoring prometheus with additional scrape config
     shell: "oc patch prometheus {{ prometheus_cr_name }} -n {{ middleware_monitoring_namespace }} --patch='{{ additional_scrape_config_patch | to_json }}' --type='merge'"
